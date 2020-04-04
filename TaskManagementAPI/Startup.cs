@@ -35,6 +35,17 @@ namespace TaskManagementAPI
             services.AddScoped<ITimeTaskRepository, TimeTaskRepository>();
             services.AddScoped<ISeverityTaskRepository, SeverityTaskRepository>();
             services.AddAutoMapper(typeof(Mappings));
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44342"));
+            });
+
             services.AddControllers();
         }
 
@@ -51,6 +62,11 @@ namespace TaskManagementAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => options.AllowAnyOrigin());
+
+            app.UseCors(options => options.WithOrigins("https://localhost:44342"));
+
 
             app.UseEndpoints(endpoints =>
             {

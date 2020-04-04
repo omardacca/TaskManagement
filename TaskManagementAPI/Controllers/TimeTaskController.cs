@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagementAPI.Data.Repository.IRepository;
@@ -14,6 +15,7 @@ namespace TaskManagementAPI.Controllers
     [Route("api/timetask")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [EnableCors("AllowOrigin")]
     public class TimeTaskController : ControllerBase
     {
         private ITimeTaskRepository _timeTaskRepo;

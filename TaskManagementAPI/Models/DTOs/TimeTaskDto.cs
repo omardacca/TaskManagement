@@ -16,7 +16,7 @@ namespace TaskManagementAPI.Models.DTOs
         [Required]
         public string Description { get; set; }
         [DateLessThan("EndDate", ErrorMessage = "Invalid Start or End Date")]
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

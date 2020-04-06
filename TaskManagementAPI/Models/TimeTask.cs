@@ -7,17 +7,8 @@ using TaskManagementAPI.Data.CustomValidations;
 
 namespace TaskManagementAPI.Models
 {
-    public class TimeTask
+    public class TimeTask : BaseTask
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        public string Title { get; set; }
-
-        [Required]
-        public string Description { get; set; }
-
         [DateLessThan("EndDate", ErrorMessage = "Invalid Start or End Date")]
         public DateTime? StartDate { get; set; }
 

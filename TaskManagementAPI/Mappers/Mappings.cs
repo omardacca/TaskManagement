@@ -14,6 +14,8 @@ namespace TaskManagementAPI.Mappers
         {
             CreateMap<TimeTask, TimeTaskDto>().ReverseMap();
             CreateMap<SeverityTask, SeverityTaskDto>().ReverseMap();
+            CreateMap<SeverityTask, AllTasksDto>().ReverseMap();
+            CreateMap<TimeTask, AllTasksDto>().ReverseMap();
         } 
     }
 }

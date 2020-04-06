@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace TaskManagementAPI.Models
 {
-    public class SeverityTask : BaseTask
-    {       
-        public enum SeverityType { Low, Medium, High, Red }
+    public class BaseTask
+    {
+        [Key]
+        public int Id { get; set; }
         
         [Required]
-        public SeverityType Severity { get; set; }
+        public string Title { get; set; }
+        
+        [Required]
+        public string Description { get; set; }
     }
 }

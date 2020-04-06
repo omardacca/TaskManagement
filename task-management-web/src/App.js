@@ -12,9 +12,9 @@ class App extends Component {
         <NavBar />
         <main className="container">
           <Switch>
-            <Route path="/tasks" component={Tasks}></Route>
-            <Route path="/addTask" component={AddTask}></Route>
-            <Redirect from="/" exact to="/tasks" />
+            <Route path="/tasks" render={(props) => <Tasks {...props} />} />
+            <Route path="/addTask" render={(props) => <AddTask {...props} />} />
+            <Redirect from="/" to="/tasks"  />
           </Switch>
         </main> 
       </React.Fragment>

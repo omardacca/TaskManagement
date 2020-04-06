@@ -34,6 +34,7 @@ namespace TaskManagementAPI
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ITimeTaskRepository, TimeTaskRepository>();
             services.AddScoped<ISeverityTaskRepository, SeverityTaskRepository>();
+            services.AddScoped<IAllTasksRepository, AllTasksRepository>();
             services.AddAutoMapper(typeof(Mappings));
             services.AddCors(c =>
             {

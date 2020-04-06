@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { getAllTimeTasks } from '../repos/TimeTaskRepo';
+import { getAllTasks } from '../repos/TimeTaskRepo';
 import ModalTaskForm from './ModalTaskForm';
 import '../css/Tasks.css';
 
 class Tasks extends Component {
     state = { 
-        timeTasks: [],
+        allTasks: [],
         show: false,
         modalContentObject: null,
         lockForm: true,
     }
 
     async componentDidMount() {
-        const res = await getAllTimeTasks();
+        const res = await getAllTasks();
         if(res && res.data) {
-            this.setState({timeTasks: res.data });
+            this.setState({allTasks: res.data });
         }
     }
     
@@ -36,15 +36,17 @@ class Tasks extends Component {
                         <th>Description</th>
                         <th>Start</th>
                         <th>End</th>
+                        <th>Severity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    { this.state.timeTasks.map(task => (
-                    <tr class="table-row" onClick={() => handleShow(task)}>
+                    { this.state.allTasks.map((task, index) => (
+                    <tr key={index} className="table-row" onClick={() => handleShow(task)}>
                         <td>{task.title}</td>
                         <td>{task.description}</td>
                         <td>{task.startDate}</td>
                         <td>{task.endDate}</td>
+                        <td>{task.severity}</td>
                     </tr>
                     ))}
                 </tbody>
